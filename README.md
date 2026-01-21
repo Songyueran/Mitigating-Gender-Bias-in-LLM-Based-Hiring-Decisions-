@@ -33,52 +33,6 @@ A fair model should output **consistent decisions** and/or **similar decision pr
 
 ---
 
-## 📁 Repo Layout (current project)
-
-```
-
-LORA_DEBIAS_RESUME_STARTER/
-├─ configs/
-│  ├─ config_qwen05b_final.yaml
-│  └─ config_qwen05b_final_bias30.yaml
-├─ data/
-│  ├─ processed_final/
-│  │  ├─ train.jsonl
-│  │  ├─ val.jsonl
-│  │  └─ test.jsonl
-│  └─ processed_final_bias30/
-│     ├─ train.jsonl
-│     ├─ val.jsonl
-│     └─ test.jsonl
-├─ runs/
-│  ├─ qwen05b_final_base/
-│  ├─ qwen05b_final_bias30/
-│  ├─ qwen05b_final_base_cf/
-│  ├─ qwen05b_final_bias30_cf/
-│  └─ qwen05b_final_bias30_cf_wce_ls01/
-├─ figs/
-│  ├─ fig1_fairness.png
-│  ├─ fig2_utility.png
-│  └─ fig3_pred_dist.png
-├─ paper/
-│  └─ outline.md
-├─ tools/
-│  ├─ plot_01.py
-│  └─ plot_metrics.py
-├─ src/
-│  ├─ make_dataset.py
-│  ├─ make_biased_train.py
-│  ├─ inject_gender_cue.py
-│  ├─ clean_pairs.py
-│  ├─ train_lora.py
-│  ├─ train_lora_cf.py
-│  ├─ eval_fairness.py
-│  └─ utils.py
-├─ requirements.txt
-└─ README.md
-
-````
-
 ---
 
 ## ✅ Installation
@@ -90,15 +44,15 @@ Recommended:
 ```bash
 pip install -r requirements.txt
 ````
-
+````
 ### Notes for Windows
 
 * HuggingFace downloads may time out occasionally — re-run the command if needed.
 * If you plan to use 4-bit training (`bitsandbytes`), **WSL** or **Colab/Linux** is usually easier.
 * This repo works fine with normal fp16 LoRA on Windows + CUDA.
 
----
-
+```
+```
 ## 0) Data Sanity Checks
 
 ### 0.1 Check file existence + line counts (PowerShell)
@@ -110,7 +64,7 @@ for s in ['train','val','test']:
     f=base/f'{s}.jsonl'
     print(s,'exists=',f.exists(),'lines=',sum(1 for _ in open(f,'r',encoding='utf-8')))"
 ```
-
+```
 ### 0.2 Quick label distribution check (optional)
 
 ```powershell
@@ -280,16 +234,5 @@ Fix by ensuring:
 
 * the collator only returns keys expected by the model (`input_ids`, `attention_mask`, `labels`), or
 * the trainer filters unused columns / does not forward auxiliary fields.
-
----
-
-## 📌 Outputs
-
-After each run, you should have:
-
-* `runs/<exp>/adapter_model.safetensors` (LoRA weights)
-* `runs/<exp>/adapter_config.json`
-* `runs/<exp>/fairness_metrics.json`
-* (optional) `runs/<exp>/debias_summary.json` for CF stage
 
 ---
