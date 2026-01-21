@@ -1,0 +1,26 @@
+project:
+  name: lora-debias-resume-final
+data:
+  processed_dir: data/processed_final
+  train_file: data/processed_final/train_abc.jsonl
+  val_file: data/processed_final/val_abc.jsonl
+  test_file: data/processed_final/test_abc.jsonl
+model:
+  base_model: Qwen/Qwen2.5-0.5B-Instruct
+  max_length: 256
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+train:
+  output_dir: runs/qwen05b_final_base
+  epochs: 3
+  lr: 0.0005
+  batch_size: 1
+  grad_accum: 8
+  warmup_ratio: 0.0
+  logging_steps: 10
+  save_steps: 200
+  seed: 42
+debias:
+  lambda_cf: 0.3

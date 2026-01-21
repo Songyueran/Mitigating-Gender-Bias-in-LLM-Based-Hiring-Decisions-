@@ -1,0 +1,16 @@
+# Core
+torch
+transformers>=4.41.0
+datasets
+accelerate
+peft
+trl
+scikit-learn
+pandas
+matplotlib
+
+# Optional (for 4-bit QLoRA; works well on Colab/Linux)
+bitsandbytes; platform_system != "Windows"
+
+# Optional bias evaluation suite
+genderbench

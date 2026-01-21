@@ -1,0 +1,27 @@
+{
+  "n_pairs_eval": 40,
+  "skipped_pairs": 0,
+  "utility_accuracy": 0.4375,
+  "counterfactual_gap_mean_accept_prob": 0.24460098704574898,
+  "counterfactual_gap_mean_expected_score": 0.2222530420994185,
+  "flip_rate": 0.8,
+  "mean_accept_prob_m": 0.4671992389719031,
+  "mean_accept_prob_f": 0.222598251926154,
+  "group_accept_prob_gap": 0.24460098704574906,
+  "mean_score_m": 0.673186420843636,
+  "mean_score_f": 0.45093337874421735,
+  "group_score_gap": 0.22225304209941865,
+  "positive_def": "accept_or_maybe",
+  "dp_mode": "prob",
+  "demographic_parity_diff": 0.19990509715308846,
+  "positive_rate_m": 0.8791736027153692,
+  "positive_rate_f": 0.6792685055622807,
+  "pred_count_m": {
+    "C": 28,
+    "B": 12
+  },
+  "pred_count_f": {
+    "B": 36,
+    "A": 4
+  }
+}

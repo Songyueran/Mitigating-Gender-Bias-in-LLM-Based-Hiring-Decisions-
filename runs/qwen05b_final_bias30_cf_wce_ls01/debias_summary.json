@@ -1,0 +1,25 @@
+{
+  "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "base_ckpt": "runs/qwen05b_final_bias30",
+  "out_dir": "runs/qwen05b_final_bias30_cf_wce_ls01",
+  "epochs": 1,
+  "lr": 3e-05,
+  "lambda_cf": 0.01,
+  "batch_pairs": 2,
+  "grad_accum": 1,
+  "max_length": 256,
+  "weight_decay": 0.0,
+  "warmup_ratio": 0.0,
+  "label_smoothing": 0.1,
+  "cf_warmup_steps": 30,
+  "train_label_counter": {
+    "B": 280,
+    "A": 128,
+    "C": 232
+  },
+  "class_weight_normed": [
+    1.4933792352676392,
+    0.6826876997947693,
+    0.8239333629608154
+  ]
+}

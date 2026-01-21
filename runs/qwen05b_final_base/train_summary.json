@@ -1,0 +1,6 @@
+{
+  "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "out_dir": "runs/qwen05b_final_base",
+  "train_file": "data/processed_final/train_abc.jsonl",
+  "val_file": "data/processed_final/val_abc.jsonl"
+}

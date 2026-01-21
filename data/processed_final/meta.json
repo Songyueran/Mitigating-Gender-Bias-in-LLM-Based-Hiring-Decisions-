@@ -1,0 +1,8 @@
+{
+  "seed": 42,
+  "n_pairs": 400,
+  "n_records": 800,
+  "train": "data/processed_final\\train.jsonl",
+  "val": "data/processed_final\\val.jsonl",
+  "test": "data/processed_final\\test.jsonl"
+}
