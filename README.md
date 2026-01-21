@@ -21,7 +21,6 @@ To measure and mitigate bias, we utilize a **Counterfactual-Pair** dataset strat
 
 ### Requirements
 - Python 3.10+
-- NVIDIA GPU + CUDA for training acceleration
 
 ```bash
 # Clone the repository
