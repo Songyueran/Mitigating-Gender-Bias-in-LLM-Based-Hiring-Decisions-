@@ -16,7 +16,7 @@ def build_text(example):
     prompt = format_prompt(example["job_desc"], example["resume"])
     lab = str(example["label"]).strip()
 
-    # 防呆：如果数据里不是 A/B/C，就直接报错，避免你默默训练错
+    # 如果数据里不是 A/B/C
     if lab not in set(LABELS):
         raise ValueError(f"Bad label={lab}. Expect one of {LABELS}. Check your *_abc.jsonl files.")
     return {"text": prompt + " " + lab}
@@ -38,7 +38,7 @@ def main():
     # 1) 读数据
     ds = load_dataset("json", data_files={"train": train_file, "validation": val_file})
 
-    # 2) 只保留 text，一刀切掉其它字段（关键：避免 label_id 之类进入 forward）
+    # 2) 只保留 text
     ds = ds.map(build_text, remove_columns=ds["train"].column_names)
 
     # 3) tokenizer
@@ -83,7 +83,7 @@ def main():
         fp16=torch.cuda.is_available(),
         report_to="none",
         seed=int(cfg["train"]["seed"]),
-        remove_unused_columns=True,    # 再保险：只喂模型需要的字段
+        remove_unused_columns=True,   
     )
 
     trainer = SFTTrainer(
@@ -102,7 +102,6 @@ def main():
     trainer.save_model(out_dir)
     tokenizer.save_pretrained(out_dir)
 
-    # 保存训练摘要
     with open(os.path.join(out_dir, "train_summary.json"), "w", encoding="utf-8") as f:
         json.dump(
             {"base_model": base_model, "out_dir": out_dir, "train_file": train_file, "val_file": val_file},
