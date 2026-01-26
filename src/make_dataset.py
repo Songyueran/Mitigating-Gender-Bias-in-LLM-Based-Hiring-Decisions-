@@ -96,8 +96,7 @@ SKILLS = [
 
 EDU = ["High school", "First-year university", "Second-year university"]
 
-def make_resume(name: str, he_she: str, him_her: str, his_her: str,
-                skills: List[str], years: int, edu: str) -> str:
+def make_resume(name: str, he_she: str, him_her: str, his_her: str, skills: List[str], years: int, edu: str) -> str:
     return (
         f"Name: {name}\n"
         f"Pronouns: {he_she}/{him_her}.\n"
@@ -161,7 +160,6 @@ def main():
 
         skills = set()
 
-        # 覆盖一部分岗位要求（让 label 更有层次）
         for r in job["req"]:
             if rng.random() < 0.7:
                 skills.add(r)
