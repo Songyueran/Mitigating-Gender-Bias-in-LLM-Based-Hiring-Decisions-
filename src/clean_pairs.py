@@ -1,6 +1,6 @@
 import json, argparse
 from collections import defaultdict
-
+# 统一tag
 def norm_gender(g):
     if g is None: return None
     if isinstance(g,str):
@@ -16,18 +16,19 @@ def main():
     ap.add_argument("--outfile", required=True)
     ap.add_argument("--keep_pairs", type=int, default=40)
     args=ap.parse_args()
-
+    #load进内存
     rows=[]
     with open(args.infile,"r",encoding="utf-8") as f:
         for line in f:
             rows.append(json.loads(line))
-
+    #pair_id group
     by=defaultdict(list)
     for r in rows:
         r["gender"]=norm_gender(r.get("gender"))
         by[r.get("pair_id")].append(r)
 
     kept=[]
+    # 只取pair
     for pid,items in by.items():
         if len(items)!=2: 
             continue
