@@ -202,7 +202,7 @@ def main():
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--grad_accum", type=int, default=1)
 
-    #new knobs to fight collapse
+    #new
     ap.add_argument("--weight_decay", type=float, default=0.0)
     ap.add_argument("--warmup_ratio", type=float, default=0.0)
     ap.add_argument("--label_smoothing", type=float, default=0.0)
