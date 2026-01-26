@@ -38,7 +38,7 @@ def main():
     # 1) 读数据
     ds = load_dataset("json", data_files={"train": train_file, "validation": val_file})
 
-    # 2) 只保留 text
+    # 2) 只保留text
     ds = ds.map(build_text, remove_columns=ds["train"].column_names)
 
     # 3) tokenizer
