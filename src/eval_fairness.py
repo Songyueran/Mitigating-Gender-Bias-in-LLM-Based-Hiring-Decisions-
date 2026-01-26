@@ -195,7 +195,6 @@ def main():
         if pred_m != pred_f:
             flip += 1
 
-        # utility accuracy assumes dataset label is also A/B/C
         correct += 1 if pred_m == male["label"] else 0
         correct += 1 if pred_f == female["label"] else 0
         total += 2
@@ -205,7 +204,7 @@ def main():
         score_m.append(expected_score(pm))
         score_f.append(expected_score(pf))
 
-        # DP / positive rate
+        # DP/positive rate
         if args.dp_mode == "argmax":
             if args.positive == "accept":
                 pos_m += 1.0 if pred_m == POS_ACCEPT else 0.0
